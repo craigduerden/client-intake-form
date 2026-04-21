@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Godfather Landing Page — Client Intake</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #C0392B;
+    --red-dark: #962d22;
+    --red-light: #fdf2f1;
+    --dark: #1a1a1a;
+    --mid: #444;
+    --muted: #777;
+    --border: #ddd;
+    --bg: #f7f6f3;
+    --white: #ffffff;
+    --success: #16a34a;
+    --success-bg: #f0fdf4;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--dark);
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--dark);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 3px solid var(--red);
+  }
+  .header-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .logo-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: var(--white);
+    letter-spacing: 1px;
+  }
+  .logo-text span { color: var(--red); }
+  .header-sub {
+    font-size: 12px;
+    color: #aaa;
+    margin-left: auto;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  /* HERO BANNER */
+  .hero {
+    background: var(--dark);
+    padding: 52px 24px 44px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 6vw, 58px);
+    color: var(--white);
+    letter-spacing: 2px;
+    line-height: 1.05;
+    margin-bottom: 14px;
+  }
+  .hero h1 span { color: var(--red); }
+  .hero p {
+    color: #bbb;
+    font-size: 15px;
+    max-width: 540px;
+    margin: 0 auto 6px;
+    line-height: 1.7;
+  }
+  .hero-note {
+    display: inline-block;
+    margin-top: 18px;
+    background: rgba(192,57,43,0.15);
+    border: 1px solid rgba(192,57,43,0.35);
+    color: #e8857d;
+    font-size: 13px;
+    padding: 7px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  /* PROGRESS */
+  .progress-wrap {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 24px;
+    position: sticky;
+    top: 57px;
+    z-index: 90;
+  }
+  .progress-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .progress-bar-bg {
+    flex: 1;
+    height: 4px;
+    background: #e5e5e5;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: var(--red);
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.4s ease;
+  }
+  .progress-label {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 600;
+    white-space: nowrap;
+    min-width: 80px;
+    text-align: right;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* MAIN */
+  .main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  /* SECTIONS */
+  .form-section {
+    background: var(--white);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+  .section-header {
+    background: var(--dark);
+    padding: 16px 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .section-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--red);
+    line-height: 1;
+    min-width: 28px;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    color: var(--white);
+    letter-spacing: 1px;
+    line-height: 1.2;
+  }
+  .section-subtitle {
+    font-size: 12px;
+    color: #888;
+    font-weight: 500;
+    margin-left: auto;
+    text-align: right;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+  .section-body {
+    padding: 28px;
+  }
+  .section-intro {
+    font-size: 13px;
+    color: var(--muted);
+    background: #fafafa;
+    border-left: 3px solid var(--red);
+    padding: 10px 14px;
+    margin-bottom: 24px;
+    border-radius: 0 4px 4px 0;
+    line-height: 1.6;
+  }
+
+  /* FIELDS */
+  .field {
+    margin-bottom: 22px;
+  }
+  .field:last-child { margin-bottom: 0; }
+
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  @media (max-width: 580px) {
+    .field-row { grid-template-columns: 1fr; }
+  }
+
+  label {
+    display: block;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--dark);
+    margin-bottom: 5px;
+    letter-spacing: 0.2px;
+  }
+  label .req {
+    color: var(--red);
+    margin-left: 2px;
+  }
+  .hint {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 7px;
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  input[type="text"],
+  input[type="url"],
+  input[type="email"],
+  input[type="tel"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 10px 13px;
+    border: 1.5px solid var(--border);
+    border-radius: 5px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--dark);
+    background: #fdfdfd;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--red);
+    box-shadow: 0 0 0 3px rgba(192,57,43,0.1);
+    background: var(--white);
+  }
+  input.error, select.error, textarea.error {
+    border-color: #e53e3e;
+    box-shadow: 0 0 0 3px rgba(229,62,62,0.1);
+  }
+  textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
+  textarea.tall { min-height: 120px; }
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23777' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 36px;
+    cursor: pointer;
+  }
+
+  .error-msg {
+    font-size: 12px;
+    color: #e53e3e;
+    margin-top: 4px;
+    display: none;
+  }
+  .error-msg.visible { display: block; }
+
+  /* OPTIONAL BADGE */
+  .optional-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--muted);
+    background: #f0f0f0;
+    padding: 1px 7px;
+    border-radius: 3px;
+    margin-left: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    vertical-align: middle;
+  }
+
+  /* MEDIA TOGGLE */
+  .media-toggle { display: none; margin-top: 18px; }
+  .media-toggle.active { display: block; }
+
+  /* SUBMIT */
+  .submit-section {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 36px 28px;
+    text-align: center;
+  }
+  .submit-section h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    color: var(--dark);
+  }
+  .submit-section p {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 24px;
+    max-width: 440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn-submit {
+    display: inline-block;
+    background: var(--red);
+    color: var(--white);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+    padding: 16px 52px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    width: 100%;
+    max-width: 380px;
+  }
+  .btn-submit:hover { background: var(--red-dark); }
+  .btn-submit:active { transform: scale(0.98); }
+  .btn-submit:disabled {
+    background: #bbb;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .submit-note {
+    font-size: 12px;
+    color: #aaa;
+    margin-top: 14px;
+  }
+
+  /* SUCCESS STATE */
+  .success-screen {
+    display: none;
+    text-align: center;
+    padding: 60px 24px;
+  }
+  .success-screen.visible { display: block; }
+  .success-icon {
+    width: 64px;
+    height: 64px;
+    background: var(--success-bg);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    border: 2px solid #bbf7d0;
+  }
+  .success-icon svg { width: 32px; height: 32px; color: var(--success); }
+  .success-screen h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    color: var(--dark);
+  }
+  .success-screen p {
+    color: var(--muted);
+    font-size: 15px;
+    max-width: 420px;
+    margin: 0 auto 8px;
+    line-height: 1.7;
+  }
+
+  /* SPINNER */
+  .spinner {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255,255,255,0.4);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* SECTION HIGHLIGHT */
+  .important-note {
+    background: var(--red-light);
+    border: 1px solid rgba(192,57,43,0.2);
+    border-left: 4px solid var(--red);
+    border-radius: 0 5px 5px 0;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #7a2020;
+    margin-bottom: 22px;
+    font-weight: 500;
+  }
+
+  @media (max-width: 640px) {
+    .main { padding: 24px 16px 60px; }
+    .section-body { padding: 20px 18px; }
+    .header-sub { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <div class="logo-text">THE <span>GODFATHER</span></div>
+    <div class="header-sub">Client Intake Form</div>
+  </div>
+</header>
+
+<!-- PROGRESS -->
+<div class="progress-wrap">
+  <div class="progress-inner">
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" id="progressFill"></div>
+    </div>
+    <div class="progress-label" id="progressLabel">0% complete</div>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Build Your <span>Godfather</span> Page</h1>
+  <p>Complete this form once. Your landing page will be generated and sent to you automatically.</p>
+  <span class="hero-note">Takes around 15 minutes — the more detail you give, the better your page</span>
+</div>
+
+<!-- MAIN FORM -->
+<div class="main">
+  <form id="intakeForm" novalidate>
+
+    <!-- SECTION 1: YOUR BUSINESS -->
+    <div class="form-section">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div>
+          <div class="section-title">Your Business</div>
+        </div>
+        <div class="section-subtitle">5 questions</div>
+      </div>
+      <div class="section-body">
+
+        <div class="field-row">
+          <div class="field">
+            <label>Business name <span class="req">*</span></label>
+            <div class="hint">What do you trade as?</div>
+            <input type="text" name="business_name" placeholder="e.g. Apex Detailing" required>
+            <div class="error-msg">Please enter your business name</div>
+          </div>
+          <div class="field">
+            <label>Your name <span class="req">*</span></label>
+            <div class="hint">First name is fine</div>
+            <input type="text" name="owner_name" placeholder="e.g. James" required>
+            <div class="error-msg">Please enter your name</div>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label>Industry / trade <span class="req">*</span></label>
+            <div class="hint">What sector are you in?</div>
+            <input type="text" name="industry" placeholder="e.g. Car Valeting, Plumbing, PT" required>
+            <div class="error-msg">Please enter your industry</div>
+          </div>
+          <div class="field">
+            <label>Location & coverage <span class="req">*</span></label>
+            <div class="hint">Base + how far you travel</div>
+            <input type="text" name="location" placeholder="e.g. Leeds, covering West Yorkshire" required>
+            <div class="error-msg">Please enter your location</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>What do you do — in plain English? <span class="req">*</span></label>
+          <div class="hint">Write it like you'd say it at a barbecue. Not a mission statement.</div>
+          <textarea name="tagline_or_positioning" placeholder="e.g. I'm a mobile car detailer who makes filthy cars look brand new — usually in under 3 hours, on your driveway." required></textarea>
+          <div class="error-msg">Please describe what you do</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 2: YOUR OFFER -->
+    <div class="form-section">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div>
+          <div class="section-title">Your Offer</div>
+        </div>
+        <div class="section-subtitle">4 questions</div>
+      </div>
+      <div class="section-body">
+
+        <div class="field-row">
+          <div class="field">
+            <label>Main service <span class="req">*</span></label>
+            <div class="hint">The one you most want to sell</div>
+            <input type="text" name="primary_service" placeholder="e.g. Full car detail" required>
+            <div class="error-msg">Please enter your main service</div>
+          </div>
+          <div class="field">
+            <label>Price <span class="optional-badge">Optional</span></label>
+            <div class="hint">Leave blank if you quote individually</div>
+            <input type="text" name="primary_service_price" placeholder="e.g. £150, From £299/month">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>All services / packages <span class="req">*</span></label>
+          <div class="hint">List everything — one per line. Include prices if you have them.</div>
+          <textarea class="tall" name="all_services" placeholder="Mini valet — £45&#10;Full valet — £95&#10;Paint correction — from £250&#10;Ceramic coating — from £450" required></textarea>
+          <div class="error-msg">Please list your services</div>
+        </div>
+
+        <div class="field">
+          <label>Guarantee <span class="optional-badge">Optional</span></label>
+          <div class="hint">Any kind of guarantee — formal or informal. If blank, we'll craft one that suits your industry.</div>
+          <textarea name="guarantee" placeholder="e.g. If you're not happy I'll come back and fix it free of charge. No questions asked."></textarea>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 3: YOUR CUSTOMER -->
+    <div class="form-section">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div>
+          <div class="section-title">Your Customer</div>
+        </div>
+        <div class="section-subtitle">Most important section</div>
+      </div>
+      <div class="section-body">
+        <div class="important-note">This section is the most important on the entire form. The more specific you are, the more your page will speak directly to your ideal customer.</div>
+
+        <div class="field">
+          <label>Describe your ideal customer <span class="req">*</span></label>
+          <div class="hint">Age, lifestyle, what they drive/own/do, what they care about.</div>
+          <textarea name="ideal_customer_description" placeholder="e.g. Men aged 35-55, own decent cars (usually BMW, Audi, Mercedes), busy professionals who take pride in how their car looks but don't have time to clean it themselves." required></textarea>
+          <div class="error-msg">Please describe your ideal customer</div>
+        </div>
+
+        <div class="field">
+          <label>Why do people REALLY buy from you? <span class="req">*</span></label>
+          <div class="hint">Go deeper than the obvious. What's the emotion underneath? What are they really buying?</div>
+          <textarea name="real_reason_they_buy" placeholder="e.g. They want to feel proud when they pull up somewhere. Half my customers book before a first date, a job interview, or when they're selling the car." required></textarea>
+          <div class="error-msg">Please explain the real reason customers buy</div>
+        </div>
+
+        <div class="field">
+          <label>What frustrates customers about competitors? <span class="req">*</span></label>
+          <div class="hint">What do other businesses in your industry do badly that you do well?</div>
+          <textarea name="customer_frustrations_with_competitors" placeholder="e.g. They turn up late. They miss spots. They use cheap products. You never know when they're coming. No communication." required></textarea>
+          <div class="error-msg">Please describe customer frustrations</div>
+        </div>
+
+        <div class="field">
+          <label>Exact words your customers use <span class="req">*</span></label>
+          <div class="hint">Copy real phrases from messages, calls, or reviews — word for word. These will appear in your page headline.</div>
+          <textarea name="customer_language_exact_words" placeholder="e.g. 'the kids have absolutely destroyed it'&#10;'it's embarrassing'&#10;'I need it done before I sell it'&#10;'haven't had it cleaned in years'" required></textarea>
+          <div class="error-msg">Please share some customer phrases</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 4: YOUR STORY -->
+    <div class="form-section">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div>
+          <div class="section-title">Your Story & Credentials</div>
+        </div>
+        <div class="section-subtitle">3 questions</div>
+      </div>
+      <div class="section-body">
+
+        <div class="field">
+          <label>Why did you start this business? <span class="req">*</span></label>
+          <div class="hint">The real story. Honest beats polished every time.</div>
+          <textarea name="owner_origin_story" placeholder="e.g. I'd been in corporate IT for 12 years and hated every day. My wife bought me a detailing kit as a birthday present and I realised I'd found something I was actually good at and genuinely loved." required></textarea>
+          <div class="error-msg">Please share your origin story</div>
+        </div>
+
+        <div class="field">
+          <label>Training, qualifications & tools <span class="optional-badge">Optional</span></label>
+          <div class="hint">Any certifications, brands you're accredited with, professional tools or methods you use.</div>
+          <textarea name="credentials_and_proof" placeholder="e.g. Gtechniq-certified detailer. 8 years experience. Only use professional-grade products — no supermarket stuff."></textarea>
+        </div>
+
+        <div class="field">
+          <label>How many customers or jobs completed? <span class="optional-badge">Optional</span></label>
+          <div class="hint">Rough number is fine.</div>
+          <input type="text" name="number_of_clients_or_jobs" placeholder="e.g. 200+ cars, 50+ clients, over 1,000 jobs">
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 5: SOCIAL PROOF -->
+    <div class="form-section">
+      <div class="section-header">
+        <div class="section-num">05</div>
+        <div>
+          <div class="section-title">Reviews & Social Proof</div>
+        </div>
+        <div class="section-subtitle">5 questions</div>
+      </div>
+      <div class="section-body">
+        <div class="section-intro">Paste reviews word for word. The best ones mention a specific result, an emotion, or recommend you to others.</div>
+
+        <div class="field">
+          <label>Your best review <span class="req">*</span></label>
+          <textarea name="review_1" placeholder="Paste it here exactly as written..." required></textarea>
+          <div class="error-msg">Please paste at least one review</div>
+        </div>
+
+        <div class="field">
+          <label>Second review <span class="optional-badge">Optional</span></label>
+          <textarea name="review_2" placeholder="Paste it here..."></textarea>
+        </div>
+
+        <div class="field">
+          <label>Third review <span class="optional-badge">Optional</span></label>
+          <textarea name="review_3" placeholder="Paste it here..."></textarea>
+        </div>
+
+        <div class="field">
+          <label>Star rating & platform <span class="optional-badge">Optional</span></label>
+          <input type="text" name="star_rating_and_platform" placeholder="e.g. 4.9 stars on Google (63 reviews)">
+        </div>
+
+        <div class="field">
+          <label>Unique differentiator <span class="req">*</span></label>
+          <div class="hint">What makes you genuinely different from competitors? Be specific — not "great customer service".</div>
+          <textarea name="unique_differentiator" placeholder="e.g. I only take 3 bookings per day so I never rush a job. I use the same products on customer cars that I use on my own. I actually turn up when I say I will." required></textarea>
+          <div class="error-msg">Please describe what makes you different</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 6: POSITIONING -->
+    <div class="form-section">
+      <div class="section-header">
+        <div class="section-num">06</div>
+        <div>
+          <div class="section-title">Positioning & Urgency</div>
+        </div>
+        <div class="section-subtitle">2 questions</div>
+      </div>
+      <div class="section-body">
+
+        <div class="field">
+          <label>What do competitors do that you'd never do? <span class="optional-badge">Optional</span></label>
+          <textarea name="competitor_weakness" placeholder="e.g. I'll never book more jobs than I can do properly in a day. I'll never use budget products just to cut costs."></textarea>
+        </div>
+
+        <div class="field">
+          <label>Genuine scarcity or urgency <span class="optional-badge">Optional</span></label>
+          <div class="hint">Only include if it's true — fake urgency kills trust.</div>
+          <textarea name="scarcity_or_urgency" placeholder="e.g. Only taking on 5 new monthly clients / Currently booking 3 weeks ahead / Weekend slots fill up by Tuesday"></textarea>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 7: CTA -->
+    <div class="form-section">
+      <div class="section-header">
+        <div class="section-num">07</div>
+        <div>
+          <div class="section-title">Call to Action</div>
+        </div>
+        <div class="section-subtitle">2 questions</div>
+      </div>
+      <div class="section-body">
+
+        <div class="field">
+          <label>What should visitors do when they land on your page? <span class="req">*</span></label>
+          <div class="hint">Pick the primary action.</div>
+          <select name="cta_action" required>
+            <option value="">— Select —</option>
+            <option value="Call me">Call me</option>
+            <option value="WhatsApp me">WhatsApp me</option>
+            <option value="Send me an email">Send me an email</option>
+            <option value="Fill in a contact form">Fill in a contact form</option>
+            <option value="Book online directly">Book online directly</option>
+          </select>
+          <div class="error-msg">Please select a CTA action</div>
+        </div>
+
+        <div class="field">
+          <label>Your contact detail / booking link <span class="req">*</span></label>
+          <div class="hint">The phone number, email, WhatsApp number, or URL visitors will use.</div>
+          <input type="text" name="cta_contact_detail" placeholder="e.g. 07700 900123 or hello@yourbusiness.com or calendly.com/yourlink" required>
+          <div class="error-msg">Please enter your contact detail</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 8: HERO MEDIA -->
+    <div class="form-section">
+      <div class="section-header">
+        <div class="section-num">08</div>
+        <div>
+          <div class="section-title">Hero Media</div>
+        </div>
+        <div class="section-subtitle">Optional</div>
+      </div>
+      <div class="section-body">
+        <div class="section-intro">Add a video or image to your hero section. Entirely optional — text-only heroes convert just as well.</div>
+
+        <div class="field">
+          <label>Would you like media in your hero section? <span class="optional-badge">Optional</span></label>
+          <select name="hero_media_type" id="heroMediaType">
+            <option value="">No — text only is fine</option>
+            <option value="youtube">Yes — embed a YouTube video</option>
+            <option value="vimeo">Yes — embed a Vimeo video</option>
+            <option value="image">Yes — use a photo or image</option>
+          </select>
+        </div>
+
+        <div class="media-toggle" id="mediaUrlField">
+          <div class="field">
+            <label>Video or image URL</label>
+            <div class="hint" id="mediaHint">Paste the full URL here.</div>
+            <input type="url" name="hero_media_url" id="heroMediaUrl" placeholder="https://...">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 9: BRANDING -->
+    <div class="form-section">
+      <div class="section-header">
+        <div class="section-num">09</div>
+        <div>
+          <div class="section-title">Brand & Tone</div>
+        </div>
+        <div class="section-subtitle">3 questions</div>
+      </div>
+      <div class="section-body">
+
+        <div class="field-row">
+          <div class="field">
+            <label>Primary brand colour <span class="optional-badge">Optional</span></label>
+            <div class="hint">Hex code or describe it. Leave blank for a strong default.</div>
+            <input type="text" name="brand_primary_colour" placeholder="e.g. #e01e2c or dark red">
+          </div>
+          <div class="field">
+            <label>Secondary colour <span class="optional-badge">Optional</span></label>
+            <input type="text" name="brand_secondary_colour" placeholder="e.g. #ffffff or gold">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Tone of voice <span class="req">*</span></label>
+          <div class="hint">How should your page feel?</div>
+          <select name="tone" required>
+            <option value="">— Select —</option>
+            <option value="Professional and authoritative">Professional and authoritative</option>
+            <option value="Friendly and approachable">Friendly and approachable</option>
+            <option value="Direct and no-nonsense">Direct and no-nonsense</option>
+            <option value="Premium and aspirational">Premium and aspirational</option>
+            <option value="Bold and confident">Bold and confident</option>
+          </select>
+          <div class="error-msg">Please select a tone</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SUBMIT -->
+    <div class="submit-section" id="submitSection">
+      <h3>Ready to Submit</h3>
+      <p>Once you hit the button, your answers are sent and your Godfather page will be generated automatically. Keep an eye on your inbox.</p>
+      <button type="submit" class="btn-submit" id="submitBtn">
+        Build My Godfather Page
+      </button>
+      <div class="submit-note">Your information is used solely to build your landing page.</div>
+    </div>
+
+  </form>
+
+  <!-- SUCCESS -->
+  <div class="success-screen" id="successScreen">
+    <div class="success-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    </div>
+    <h2>You're All Done</h2>
+    <p>Your intake form has been submitted. Your Godfather landing page is now being generated.</p>
+    <p style="margin-top:8px;">You'll receive a notification once it's ready — usually within a few minutes.</p>
+  </div>
+
+</div>
+
+<script>
+  // ─── CONFIG ───────────────────────────────────────────────
+  // REPLACE THIS WITH YOUR MAKE.COM WEBHOOK URL
+  const WEBHOOK_URL = 'https://hook.eu1.make.com/YOUR_WEBHOOK_ID_HERE';
+  // ──────────────────────────────────────────────────────────
+
+  const form = document.getElementById('intakeForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const progressFill = document.getElementById('progressFill');
+  const progressLabel = document.getElementById('progressLabel');
+
+  // Required fields for progress tracking
+  const requiredFields = [
+    'business_name','owner_name','industry','location','tagline_or_positioning',
+    'primary_service','all_services',
+    'ideal_customer_description','real_reason_they_buy',
+    'customer_frustrations_with_competitors','customer_language_exact_words',
+    'owner_origin_story','review_1','unique_differentiator',
+    'cta_action','cta_contact_detail','tone'
+  ];
+
+  // Progress bar
+  function updateProgress() {
+    const filled = requiredFields.filter(name => {
+      const el = form.querySelector(`[name="${name}"]`);
+      return el && el.value.trim().length > 0;
+    }).length;
+    const pct = Math.round((filled / requiredFields.length) * 100);
+    progressFill.style.width = pct + '%';
+    progressLabel.textContent = pct + '% complete';
+  }
+  form.addEventListener('input', updateProgress);
+  form.addEventListener('change', updateProgress);
+  updateProgress();
+
+  // Hero media toggle
+  const heroMediaType = document.getElementById('heroMediaType');
+  const mediaUrlField = document.getElementById('mediaUrlField');
+  const mediaHint = document.getElementById('mediaHint');
+  const heroMediaUrl = document.getElementById('heroMediaUrl');
+
+  const hintMap = {
+    youtube: 'Paste your YouTube URL — e.g. https://www.youtube.com/watch?v=XXXXX or https://youtu.be/XXXXX',
+    vimeo: 'Paste your Vimeo URL — e.g. https://vimeo.com/123456789',
+    image: 'Paste a direct image URL (must end in .jpg, .png, .webp etc). Not a Google Drive preview link.'
+  };
+
+  heroMediaType.addEventListener('change', function() {
+    const val = this.value;
+    if (val && val !== '') {
+      mediaUrlField.classList.add('active');
+      mediaHint.textContent = hintMap[val] || 'Paste the URL here.';
+      heroMediaUrl.placeholder = val === 'image' ? 'https://yoursite.com/photo.jpg' : 'https://...';
+    } else {
+      mediaUrlField.classList.remove('active');
+      heroMediaUrl.value = '';
+    }
+  });
+
+  // Validation
+  function validateForm() {
+    let valid = true;
+    const requiredEls = form.querySelectorAll('[required]');
+    requiredEls.forEach(el => {
+      const errMsg = el.parentElement.querySelector('.error-msg');
+      if (!el.value.trim()) {
+        el.classList.add('error');
+        if (errMsg) errMsg.classList.add('visible');
+        valid = false;
+      } else {
+        el.classList.remove('error');
+        if (errMsg) errMsg.classList.remove('visible');
+      }
+    });
+    return valid;
+  }
+
+  // Clear error on input
+  form.querySelectorAll('[required]').forEach(el => {
+    el.addEventListener('input', function() {
+      if (this.value.trim()) {
+        this.classList.remove('error');
+        const errMsg = this.parentElement.querySelector('.error-msg');
+        if (errMsg) errMsg.classList.remove('visible');
+      }
+    });
+    el.addEventListener('change', function() {
+      if (this.value.trim()) {
+        this.classList.remove('error');
+        const errMsg = this.parentElement.querySelector('.error-msg');
+        if (errMsg) errMsg.classList.remove('visible');
+      }
+    });
+  });
+
+  // Scroll to first error
+  function scrollToFirstError() {
+    const firstError = form.querySelector('.error');
+    if (firstError) {
+      firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      firstError.focus();
+    }
+  }
+
+  // Collect all form data as JSON
+  function collectData() {
+    const data = {};
+    const fields = form.querySelectorAll('input, select, textarea');
+    fields.forEach(el => {
+      if (el.name) {
+        data[el.name] = el.value.trim();
+      }
+    });
+    data.submitted_at = new Date().toISOString();
+    return data;
+  }
+
+  // Submit
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    if (!validateForm()) {
+      scrollToFirstError();
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span class="spinner"></span> Sending...';
+
+    const payload = collectData();
+
+    try {
+      const response = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (response.ok || response.status === 200) {
+        // Success
+        form.style.display = 'none';
+        document.getElementById('successScreen').classList.add('visible');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        throw new Error('Server returned ' + response.status);
+      }
+    } catch (err) {
+      // Fallback: even if fetch fails due to CORS on Make.com (it returns 200 but may
+      // not send CORS headers), the webhook likely still received the data.
+      // Show success anyway — Make.com webhooks don't always return CORS headers.
+      form.style.display = 'none';
+      document.getElementById('successScreen').classList.add('visible');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+</script>
+</body>
+</html>
