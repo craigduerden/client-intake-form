@@ -6,27 +6,24 @@
 <title>The Godfather — Client Intake</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --red: #e01e2c;
-    --red-dark: #b8151f;
-    --red-dim: rgba(224,30,44,0.08);
-    --black: #0d0d0d;
-    --off-black: #1a1a1a;
-    --dark: #242424;
-    --mid: #3a3a3a;
-    --muted: #777;
-    --subtle: #aaa;
-    --border: rgba(255,255,255,0.08);
-    --border-active: rgba(255,255,255,0.18);
-    --surface: #1e1e1e;
-    --surface-2: #252525;
+    --green: #00c853;
+    --green-dark: #00a844;
+    --green-dim: rgba(0,200,83,0.08);
+    --green-mid: rgba(0,200,83,0.15);
+    --page-bg: #f5f6f8;
     --white: #ffffff;
-    --text-primary: #f0f0f0;
-    --text-secondary: #999;
+    --surface: #ffffff;
+    --surface-2: #f0f1f4;
+    --border: rgba(0,0,0,0.08);
+    --border-active: rgba(0,0,0,0.15);
+    --text-primary: #0f1117;
+    --text-secondary: #5a6070;
+    --muted: #9aa0ad;
     --radius: 10px;
     --transition: 0.18s ease;
   }
@@ -34,8 +31,8 @@
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--black);
+    font-family: 'Inter', sans-serif;
+    background: var(--page-bg);
     color: var(--text-primary);
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
@@ -60,7 +57,7 @@
   .logo-mark {
     width: 38px;
     height: 38px;
-    background: var(--red);
+    background: var(--green);
     border-radius: 6px;
     display: flex;
     align-items: center;
@@ -69,12 +66,13 @@
   }
   .logo-mark svg { width: 20px; height: 20px; fill: #fff; }
   .logo-text {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
-    letter-spacing: 1.5px;
-    color: var(--white);
+    font-family: 'Outfit', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--text-primary);
   }
-  .logo-text span { color: var(--red); }
+  .logo-text span { color: var(--green); }
 
   /* ---- PROGRESS ---- */
   .progress-wrap {
@@ -92,8 +90,9 @@
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    color: var(--red);
-    font-weight: 500;
+    color: var(--green-dark);
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
   }
   .progress-fraction {
     font-size: 11px;
@@ -101,14 +100,14 @@
     letter-spacing: 0.5px;
   }
   .progress-track {
-    height: 2px;
-    background: var(--border);
+    height: 3px;
+    background: #e2e5ea;
     border-radius: 2px;
     overflow: hidden;
   }
   .progress-fill {
     height: 100%;
-    background: var(--red);
+    background: var(--green);
     border-radius: 2px;
     transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
   }
@@ -121,11 +120,11 @@
     height: 3px;
     flex: 1;
     border-radius: 3px;
-    background: var(--border);
+    background: #e2e5ea;
     transition: background 0.3s;
   }
-  .step-dot.done { background: var(--red); }
-  .step-dot.active { background: rgba(224,30,44,0.5); }
+  .step-dot.done { background: var(--green); }
+  .step-dot.active { background: rgba(0,200,83,0.4); }
 
   /* ---- HERO INTRO ---- */
   .hero-intro {
@@ -133,23 +132,26 @@
     text-align: center;
   }
   .hero-intro .eyebrow {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 13px;
-    letter-spacing: 3px;
-    color: var(--red);
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--green-dark);
     margin-bottom: 16px;
   }
   .hero-intro h1 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(42px, 8vw, 68px);
-    line-height: 0.95;
-    letter-spacing: 1px;
-    color: var(--white);
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(38px, 7vw, 60px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.5px;
+    color: var(--text-primary);
     margin-bottom: 20px;
   }
   .hero-intro h1 em {
     font-style: normal;
-    color: var(--red);
+    color: var(--green);
     display: block;
   }
   .hero-intro p {
@@ -164,37 +166,38 @@
     align-items: center;
     gap: 6px;
     background: var(--surface);
-    border: 0.5px solid var(--border-active);
+    border: 1px solid var(--border);
     border-radius: 20px;
     padding: 6px 14px;
     font-size: 13px;
     color: var(--text-secondary);
     margin-bottom: 40px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
   }
   .hero-intro .time-note::before {
     content: '';
     width: 6px; height: 6px;
     border-radius: 50%;
-    background: var(--red);
+    background: var(--green);
     flex-shrink: 0;
   }
   .btn-start {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: var(--red);
+    background: var(--green);
     color: #fff;
     border: none;
     border-radius: var(--radius);
     padding: 15px 32px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 15px;
     font-weight: 500;
     cursor: pointer;
     transition: background var(--transition), transform 0.1s;
     text-decoration: none;
   }
-  .btn-start:hover { background: var(--red-dark); }
+  .btn-start:hover { background: var(--green-dark); }
   .btn-start:active { transform: scale(0.98); }
   .btn-start svg { width: 16px; height: 16px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
@@ -208,15 +211,17 @@
   }
   .sp-item {
     background: var(--surface);
-    border: 0.5px solid var(--border);
+    border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
   }
   .sp-num {
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: 'Outfit', sans-serif;
     font-size: 13px;
-    color: var(--red);
-    letter-spacing: 1px;
+    font-weight: 600;
+    color: var(--green);
+    letter-spacing: 0.5px;
     margin-bottom: 4px;
   }
   .sp-label {
@@ -243,19 +248,22 @@
     padding: 36px 0 28px;
   }
   .step-eyebrow {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 12px;
-    letter-spacing: 3px;
-    color: var(--red);
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--green-dark);
     margin-bottom: 8px;
   }
   .step-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(28px, 6vw, 40px);
-    letter-spacing: 0.5px;
-    color: var(--white);
-    line-height: 1;
-    margin-bottom: 8px;
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(26px, 5vw, 36px);
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    color: var(--text-primary);
+    line-height: 1.1;
+    margin-bottom: 10px;
   }
   .step-desc {
     font-size: 14px;
@@ -277,17 +285,18 @@
     display: flex;
     align-items: center;
     gap: 6px;
+    font-family: 'Inter', sans-serif;
   }
   .field-label .req {
-    color: var(--red);
+    color: #e53e3e;
     font-size: 12px;
   }
   .field-label .opt {
     font-size: 11px;
     color: var(--text-secondary);
     font-weight: 400;
-    background: var(--surface-2);
-    border: 0.5px solid var(--border);
+    background: #eef0f4;
+    border: 1px solid var(--border);
     border-radius: 4px;
     padding: 2px 6px;
     letter-spacing: 0.3px;
@@ -305,35 +314,34 @@
   input[type=tel],
   textarea,
   select {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
     color: var(--text-primary);
     background: var(--surface);
-    border: 0.5px solid var(--border-active);
+    border: 1px solid #d1d5db;
     border-radius: var(--radius);
-    padding: 12px 16px;
+    padding: 11px 14px;
     width: 100%;
-    transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+    transition: border-color var(--transition), box-shadow var(--transition);
     outline: none;
     -webkit-appearance: none;
     appearance: none;
   }
-  input::placeholder, textarea::placeholder { color: var(--muted); }
+  input::placeholder, textarea::placeholder { color: #b0b7c3; }
   input:focus, textarea:focus, select:focus {
-    border-color: var(--red);
-    background: var(--surface-2);
-    box-shadow: 0 0 0 3px rgba(224,30,44,0.12);
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(0,200,83,0.12);
   }
   textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
   textarea.tall { min-height: 130px; }
   select {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23777' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235a6070' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 14px center;
     padding-right: 38px;
     cursor: pointer;
   }
-  select option { background: #2a2a2a; color: var(--text-primary); }
+  select option { background: #fff; color: var(--text-primary); }
 
   .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 
@@ -344,22 +352,22 @@
     align-items: flex-start;
     gap: 12px;
     background: var(--surface);
-    border: 0.5px solid var(--border-active);
+    border: 1px solid #d1d5db;
     border-radius: var(--radius);
-    padding: 14px 16px;
+    padding: 13px 15px;
     cursor: pointer;
     transition: border-color var(--transition), background var(--transition);
     user-select: none;
   }
-  .option-card:hover { border-color: rgba(255,255,255,0.28); background: var(--surface-2); }
+  .option-card:hover { border-color: var(--green); background: var(--green-dim); }
   .option-card input[type=radio],
   .option-card input[type=checkbox] {
     width: auto;
-    min-width: 18px;
-    height: 18px;
-    margin: 1px 0 0;
+    min-width: 17px;
+    height: 17px;
+    margin: 2px 0 0;
     flex-shrink: 0;
-    accent-color: var(--red);
+    accent-color: var(--green);
     cursor: pointer;
     border: none;
     background: none;
@@ -367,21 +375,21 @@
     padding: 0;
   }
   .option-card.selected {
-    border-color: var(--red);
-    background: var(--red-dim);
+    border-color: var(--green);
+    background: var(--green-dim);
   }
-  .option-label { font-size: 14px; color: var(--text-primary); line-height: 1.4; }
+  .option-label { font-size: 14px; color: var(--text-primary); line-height: 1.4; font-weight: 500; font-family: 'Inter', sans-serif; }
   .option-sub { font-size: 12px; color: var(--text-secondary); margin-top: 2px; line-height: 1.4; }
 
   /* ---- ERROR STATE ---- */
   .field-group.has-error input,
   .field-group.has-error textarea,
   .field-group.has-error select {
-    border-color: rgba(224,30,44,0.6);
+    border-color: #fc8181;
   }
   .error-msg {
     font-size: 12px;
-    color: #ff6b6b;
+    color: #e53e3e;
     display: none;
   }
   .field-group.has-error .error-msg { display: block; }
@@ -393,7 +401,7 @@
     justify-content: space-between;
     margin-top: 36px;
     padding-top: 24px;
-    border-top: 0.5px solid var(--border);
+    border-top: 1px solid var(--border);
     gap: 12px;
   }
   .btn-back {
@@ -401,28 +409,28 @@
     align-items: center;
     gap: 6px;
     background: transparent;
-    border: 0.5px solid var(--border-active);
+    border: 1px solid #d1d5db;
     border-radius: var(--radius);
     padding: 12px 20px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 14px;
     color: var(--text-secondary);
     cursor: pointer;
     transition: border-color var(--transition), color var(--transition);
   }
-  .btn-back:hover { border-color: var(--border-active); color: var(--text-primary); }
+  .btn-back:hover { border-color: var(--text-secondary); color: var(--text-primary); }
   .btn-back svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
   .btn-next {
     display: flex;
     align-items: center;
     gap: 8px;
-    background: var(--red);
+    background: var(--green);
     color: #fff;
     border: none;
     border-radius: var(--radius);
     padding: 13px 28px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 15px;
     font-weight: 500;
     cursor: pointer;
@@ -432,7 +440,7 @@
     max-width: 280px;
     margin-left: auto;
   }
-  .btn-next:hover { background: var(--red-dark); }
+  .btn-next:hover { background: var(--green-dark); }
   .btn-next:active { transform: scale(0.98); }
   .btn-next:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
   .btn-next svg { width: 15px; height: 15px; fill: none; stroke: #fff; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
@@ -448,7 +456,7 @@
     color: var(--text-secondary);
     font-size: 13px;
     cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     text-decoration: underline;
     text-underline-offset: 3px;
     padding: 4px;
@@ -457,14 +465,14 @@
 
   /* ---- WEBHOOK CONFIG ---- */
   .webhook-panel {
-    background: var(--surface);
-    border: 0.5px solid var(--border-active);
+    background: #f8f9fb;
+    border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 16px;
     margin-bottom: 28px;
   }
-  .webhook-panel label { font-size: 12px; color: var(--text-secondary); display: block; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.8px; }
-  .webhook-panel input { font-size: 13px; background: var(--dark); }
+  .webhook-panel label { font-size: 12px; color: var(--text-secondary); display: block; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.8px; font-family: 'Inter', sans-serif; font-weight: 500; }
+  .webhook-panel input { font-size: 13px; background: var(--surface); }
 
   /* ---- SUBMIT STATE ---- */
   .btn-submit {
@@ -472,12 +480,12 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    background: var(--red);
+    background: var(--green);
     color: #fff;
     border: none;
     border-radius: var(--radius);
     padding: 16px 32px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 16px;
     font-weight: 500;
     cursor: pointer;
@@ -485,14 +493,14 @@
     transition: background var(--transition);
     margin-top: 4px;
   }
-  .btn-submit:hover { background: var(--red-dark); }
+  .btn-submit:hover { background: var(--green-dark); }
   .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
   .btn-submit svg { width: 16px; height: 16px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
   .submit-err {
     margin-top: 12px;
     font-size: 13px;
-    color: #ff6b6b;
+    color: #e53e3e;
     display: none;
     text-align: center;
   }
@@ -501,17 +509,20 @@
   .review-grid { display: flex; flex-direction: column; gap: 16px; }
   .review-section {
     background: var(--surface);
-    border: 0.5px solid var(--border);
+    border: 1px solid var(--border);
     border-radius: var(--radius);
     overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
   }
   .review-section-header {
-    background: var(--surface-2);
+    background: #f8f9fb;
     padding: 10px 16px;
     font-size: 11px;
-    font-family: 'Bebas Neue', sans-serif;
-    letter-spacing: 2px;
-    color: var(--red);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--green-dark);
   }
   .review-rows { padding: 12px 16px; display: flex; flex-direction: column; gap: 10px; }
   .review-row { display: grid; grid-template-columns: 160px 1fr; gap: 12px; }
@@ -529,26 +540,27 @@
   .success-icon {
     width: 64px;
     height: 64px;
-    background: rgba(224,30,44,0.1);
-    border: 0.5px solid rgba(224,30,44,0.3);
+    background: rgba(0,200,83,0.1);
+    border: 1px solid rgba(0,200,83,0.25);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 24px;
   }
-  .success-icon svg { width: 28px; height: 28px; fill: none; stroke: var(--red); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .success-icon svg { width: 28px; height: 28px; fill: none; stroke: var(--green-dark); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
   #success-stage h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 42px;
-    letter-spacing: 1px;
-    color: var(--white);
+    font-family: 'Outfit', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--text-primary);
     margin-bottom: 14px;
   }
   #success-stage p { font-size: 15px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 12px; }
   .success-detail {
     background: var(--surface);
-    border: 0.5px solid var(--border-active);
+    border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 16px 20px;
     margin-top: 28px;
@@ -556,11 +568,12 @@
     font-size: 13px;
     color: var(--text-secondary);
     line-height: 1.7;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
   }
 
   /* ---- DIVIDER ---- */
   .divider {
-    height: 0.5px;
+    height: 1px;
     background: var(--border);
     margin: 8px 0;
   }
@@ -577,7 +590,7 @@
   .red-rule {
     width: 40px;
     height: 2px;
-    background: var(--red);
+    background: var(--green);
     margin: 0 auto 28px;
   }
 </style>
