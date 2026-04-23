@@ -1237,11 +1237,6 @@
 
         <div class="divider"></div>
 
-        <div class="webhook-panel">
-          <label>Webhook URL</label>
-          <input type="url" id="webhook_url" placeholder="https://your-webhook-endpoint.com/intake">
-        </div>
-
         <button class="btn-submit" id="btn-submit" onclick="submitForm()">
           <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
           Build my Godfather page
@@ -1479,16 +1474,10 @@
   }
 
   async function submitForm() {
-    const webhookUrl = document.getElementById('webhook_url').value.trim();
+    const webhookUrl = 'https://hook.eu1.make.com/2p62c56alwlbv4ca7ojse6ufmwjpl5j5';
     const errEl = document.getElementById('submit-err');
     const btn = document.getElementById('btn-submit');
     errEl.style.display = 'none';
-
-    if (!webhookUrl) {
-      errEl.textContent = 'Please enter your webhook URL before submitting.';
-      errEl.style.display = 'block';
-      return;
-    }
 
     btn.disabled = true;
     btn.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Sending…';
